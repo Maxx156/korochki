@@ -1,0 +1,593 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    overflow-x: hidden;
+    background-color: #fff;
+}
+
+/* Header */
+.header {
+    background-color: #87CEEB;
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.header-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: auto 1fr auto 1fr auto;
+    align-items: center;
+    gap: 20px;
+    padding: 0 30px;
+}
+
+.logo {
+    animation: float 3s ease-in-out infinite;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    height: 50px;
+    text-decoration: none;
+}
+
+.logo svg {
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover svg {
+    transform: rotate(5deg) scale(1.1);
+}
+
+.nav-left {
+    display: flex;
+    gap: 25px;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.nav-right {
+    display: flex;
+    gap: 25px;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.nav-link {
+    color: #000;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    white-space: nowrap;
+}
+
+.nav-link:hover {
+    transform: translateY(-2px);
+    color: #4169E1;
+}
+
+.nav-link.active {
+    color: #4169E1;
+    font-weight: bold;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #4169E1;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+.header-title {
+    font-size: 32px;
+    font-weight: bold;
+    color: #000;
+    white-space: nowrap;
+    animation: fadeInDown 1s ease;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    margin: 0;
+}
+
+/* Main Content */
+.main-content {
+    background-color: #fff;
+    min-height: calc(100vh - 200px);
+    padding: 60px 30px;
+    position: relative;
+}
+
+.team-title {
+    text-align: center;
+    font-size: 48px;
+    font-weight: bold;
+    color: #000;
+    margin-bottom: 60px;
+    animation: fadeInDown 1s ease;
+}
+
+.team-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    align-items: start;
+}
+
+/* Team Card */
+.team-card {
+    background-color: #E0F2F7;
+    border-radius: 15px;
+    padding: 40px 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    animation: fadeInUp 0.8s ease forwards;
+    opacity: 0;
+    text-align: center;
+}
+
+.team-card:nth-child(1) {
+    animation-delay: 0.2s;
+}
+
+.team-card:nth-child(2) {
+    animation-delay: 0.4s;
+}
+
+.team-card:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+.team-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Profile Picture */
+.profile-picture {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 30px;
+    border-radius: 50%;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    position: relative;
+}
+
+/* Avatar Styles */
+.avatar {
+    width: 180px;
+    height: 180px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.avatar-head {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.face {
+    width: 80px;
+    height: 80px;
+    background-color: #FFDBAC;
+    border-radius: 50%;
+    position: relative;
+    margin: 0 auto;
+}
+
+/* Hair */
+.hair {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90px;
+    height: 50px;
+    border-radius: 50% 50% 0 0;
+    z-index: 1;
+}
+
+.hair.dark {
+    background-color: #2C1810;
+}
+
+.hair.blonde {
+    background-color: #F4D03F;
+}
+
+.hair.long {
+    height: 80px;
+    border-radius: 50%;
+    top: -20px;
+    width: 100px;
+}
+
+/* Eyes */
+.eyes {
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 15px;
+}
+
+.eye {
+    width: 8px;
+    height: 8px;
+    background-color: #000;
+    border-radius: 50%;
+    position: relative;
+}
+
+.eye.serious {
+    width: 10px;
+    height: 4px;
+    border-radius: 0;
+}
+
+/* Glasses */
+.glasses {
+    position: absolute;
+    top: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 5px;
+}
+
+.glass {
+    width: 25px;
+    height: 20px;
+    border: 2px solid #4169E1;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.glass-bridge {
+    width: 5px;
+    height: 2px;
+    background-color: #4169E1;
+    margin-top: 9px;
+}
+
+/* Nose */
+.nose {
+    position: absolute;
+    top: 45px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 8px;
+    height: 12px;
+    border-left: 2px solid rgba(0, 0, 0, 0.2);
+    border-right: 2px solid rgba(0, 0, 0, 0.2);
+    border-radius: 0 0 50% 50%;
+}
+
+/* Mouth */
+.mouth {
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 10px;
+    border: 2px solid #000;
+    border-top: none;
+    border-radius: 0 0 50% 50%;
+}
+
+.mouth.smile {
+    border-radius: 0 0 50% 50%;
+}
+
+.mouth.serious {
+    width: 15px;
+    height: 2px;
+    border: none;
+    border-top: 2px solid #000;
+    border-radius: 0;
+}
+
+/* Beard */
+.beard {
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 30px;
+    background-color: #2C1810;
+    border-radius: 0 0 50% 50%;
+}
+
+/* Mustache */
+.mustache {
+    position: absolute;
+    top: 55px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 8px;
+    border-top: 3px solid #2C1810;
+    border-radius: 50% 50% 0 0;
+}
+
+/* Goatee */
+.goatee {
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 15px;
+    background-color: #2C1810;
+    border-radius: 0 0 50% 50%;
+}
+
+/* Avatar Body */
+.avatar-body {
+    width: 120px;
+    height: 80px;
+    position: relative;
+}
+
+.suit-jacket {
+    width: 100%;
+    height: 60px;
+    background-color: #1a1a1a;
+    border-radius: 5px 5px 0 0;
+    position: relative;
+}
+
+.suit-jacket::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 30px;
+    background-color: #2a2a2a;
+    border-radius: 3px;
+}
+
+.shirt {
+    width: 100%;
+    height: 20px;
+    background-color: #fff;
+    border-radius: 0 0 5px 5px;
+}
+
+.tie {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 8px;
+    height: 40px;
+    background-color: #4169E1;
+    border-radius: 0 0 5px 5px;
+}
+
+.top.light {
+    width: 100%;
+    height: 60px;
+    background-color: #E8E8E8;
+    border-radius: 5px;
+}
+
+/* Member Info */
+.member-name {
+    font-size: 24px;
+    font-weight: bold;
+    color: #000;
+    margin-bottom: 10px;
+}
+
+.member-role {
+    font-size: 16px;
+    color: #000;
+    margin-bottom: 20px;
+    font-weight: normal;
+}
+
+.member-description {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #000;
+    text-align: left;
+}
+
+/* Footer */
+.footer {
+    background-color: #87CEEB;
+    padding: 25px 0;
+}
+
+.footer-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+}
+
+.footer-links {
+    display: flex;
+    gap: 30px;
+}
+
+.footer-link {
+    color: #000;
+    text-decoration: none;
+    font-size: 16px;
+    position: relative;
+    padding-left: 15px;
+    transition: all 0.3s ease;
+}
+
+.footer-link::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    background-color: #4169E1;
+    border-radius: 50%;
+}
+
+.footer-link:hover {
+    transform: translateX(5px);
+    color: #4169E1;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    border-radius: 4px;
+}
+
+.social-icon:hover {
+    transform: scale(1.2) rotate(5deg);
+}
+
+.social-icon.vk svg text {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* Animations */
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .team-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .header-container {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        text-align: center;
+    }
+    
+    .logo {
+        justify-content: center;
+    }
+    
+    .nav-left, .nav-right {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .header-title {
+        order: -1;
+    }
+    
+    .team-title {
+        font-size: 36px;
+    }
+    
+    .team-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .profile-picture {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .avatar {
+        width: 130px;
+        height: 130px;
+    }
+    
+    .footer-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .footer-links {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+

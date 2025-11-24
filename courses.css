@@ -1,0 +1,735 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    overflow-x: hidden;
+    background-color: #fff;
+}
+
+/* Header */
+.header {
+    background-color: #87CEEB;
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.header-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: auto 1fr auto 1fr auto;
+    align-items: center;
+    gap: 20px;
+    padding: 0 30px;
+}
+
+.logo {
+    animation: float 3s ease-in-out infinite;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    height: 50px;
+    text-decoration: none;
+}
+
+.logo svg {
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover svg {
+    transform: rotate(5deg) scale(1.1);
+}
+
+.nav-left {
+    display: flex;
+    gap: 25px;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.nav-right {
+    display: flex;
+    gap: 25px;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.nav-link {
+    color: #000;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    white-space: nowrap;
+}
+
+.nav-link:hover {
+    transform: translateY(-2px);
+    color: #4169E1;
+}
+
+.nav-link.active {
+    color: #4169E1;
+    font-weight: bold;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #4169E1;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+.header-title {
+    font-size: 32px;
+    font-weight: bold;
+    color: #000;
+    white-space: nowrap;
+    animation: fadeInDown 1s ease;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    margin: 0;
+}
+
+/* Main Content */
+.main-content {
+    background-color: #fff;
+    min-height: calc(100vh - 200px);
+    padding: 60px 30px;
+    position: relative;
+}
+
+.courses-title {
+    text-align: center;
+    font-size: 48px;
+    font-weight: bold;
+    color: #000;
+    margin-bottom: 60px;
+    animation: fadeInDown 1s ease;
+}
+
+.courses-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    align-items: start;
+}
+
+/* Course Card */
+.course-card {
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    animation: fadeInUp 0.8s ease forwards;
+    opacity: 0;
+}
+
+.course-card:nth-child(1) {
+    animation-delay: 0.2s;
+}
+
+.course-card:nth-child(2) {
+    animation-delay: 0.4s;
+}
+
+.course-card:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+.course-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.course-illustration {
+    position: relative;
+    height: 300px;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Megaphone */
+.megaphone {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    z-index: 2;
+}
+
+.megaphone-body {
+    width: 100px;
+    height: 80px;
+    background-color: #fff;
+    border: 4px solid #4169E1;
+    border-radius: 50px 10px 10px 50px;
+    position: relative;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.megaphone-handle {
+    position: absolute;
+    right: -15px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 20px;
+    background-color: #4169E1;
+    border-radius: 0 10px 10px 0;
+}
+
+.megaphone-waves {
+    position: absolute;
+    left: -40px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.wave {
+    position: absolute;
+    border: 2px solid #4169E1;
+    border-radius: 50%;
+    opacity: 0.6;
+    animation: waveExpand 2s ease-out infinite;
+}
+
+.wave-1 {
+    width: 40px;
+    height: 40px;
+    left: 0;
+    top: 0;
+    animation-delay: 0s;
+}
+
+.wave-2 {
+    width: 60px;
+    height: 60px;
+    left: -10px;
+    top: -10px;
+    animation-delay: 0.3s;
+}
+
+.wave-3 {
+    width: 80px;
+    height: 80px;
+    left: -20px;
+    top: -20px;
+    animation-delay: 0.6s;
+}
+
+/* Icons around megaphone */
+.icon {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    animation: floatIcon 3s ease-in-out infinite;
+}
+
+.icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.icon-pie-chart {
+    top: 10%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.icon-gear {
+    top: 20%;
+    right: 15%;
+    animation-delay: 0.5s;
+}
+
+.icon-location {
+    bottom: 20%;
+    left: 15%;
+    animation-delay: 1s;
+}
+
+.icon-cart {
+    bottom: 10%;
+    right: 10%;
+    animation-delay: 1.5s;
+}
+
+.icon-lightbulb {
+    top: 50%;
+    left: 5%;
+    animation-delay: 2s;
+}
+
+.icon-arrow {
+    top: 50%;
+    right: 5%;
+    animation-delay: 2.5s;
+}
+
+/* Businessman */
+.businessman {
+    position: relative;
+    width: 100px;
+    height: 200px;
+    z-index: 2;
+}
+
+.businessman-head {
+    width: 40px;
+    height: 40px;
+    background-color: #FFDBAC;
+    border-radius: 50%;
+    margin: 0 auto 10px;
+}
+
+.businessman-body {
+    width: 80px;
+    height: 100px;
+    background-color: #4169E1;
+    border-radius: 5px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.businessman-body::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 30px;
+    background-color: #fff;
+    border-radius: 3px;
+}
+
+.businessman-legs {
+    width: 30px;
+    height: 60px;
+    background-color: #333;
+    margin: 10px auto 0;
+    border-radius: 3px;
+}
+
+.briefcase {
+    position: absolute;
+    bottom: 50px;
+    right: -20px;
+    width: 60px;
+    height: 40px;
+    z-index: 3;
+}
+
+.briefcase-body {
+    width: 100%;
+    height: 30px;
+    background-color: #4169E1;
+    border-radius: 5px;
+    position: relative;
+}
+
+.briefcase-handle {
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 8px;
+    background-color: #333;
+    border-radius: 8px 8px 0 0;
+}
+
+.briefcase-clasp {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 15px;
+    height: 3px;
+    background-color: #FFD700;
+    border-radius: 2px;
+}
+
+.briefcase-clasp.gold {
+    background-color: #FFD700;
+}
+
+/* Laptop */
+.laptop {
+    position: relative;
+    width: 150px;
+    height: 100px;
+    z-index: 1;
+}
+
+.laptop-screen {
+    width: 140px;
+    height: 90px;
+    background-color: #fff;
+    border: 3px solid #4169E1;
+    border-radius: 5px 5px 0 0;
+    position: relative;
+    padding: 10px;
+}
+
+.laptop-base {
+    width: 150px;
+    height: 8px;
+    background-color: #4169E1;
+    border-radius: 0 0 5px 5px;
+    margin: 0 auto;
+}
+
+/* Charts */
+.chart-bar {
+    display: flex;
+    align-items: flex-end;
+    gap: 5px;
+    height: 30px;
+    margin-bottom: 5px;
+}
+
+.bar {
+    flex: 1;
+    background-color: #4169E1;
+    border-radius: 2px 2px 0 0;
+    animation: barGrow 1s ease-out;
+}
+
+.bar-1 { height: 60%; animation-delay: 0.1s; }
+.bar-2 { height: 80%; animation-delay: 0.2s; }
+.bar-3 { height: 100%; animation-delay: 0.3s; }
+.bar-4 { height: 70%; animation-delay: 0.4s; }
+
+.chart-pie {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    margin: 5px auto;
+}
+
+.pie-slice {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    clip-path: polygon(50% 50%, 50% 0%, 100% 0%, 100% 100%, 50% 100%);
+}
+
+.slice-1 {
+    background-color: #4169E1;
+    transform: rotate(0deg);
+}
+
+.slice-2 {
+    background-color: #87CEEB;
+    transform: rotate(120deg);
+}
+
+.slice-3 {
+    background-color: #32CD32;
+    transform: rotate(240deg);
+}
+
+.chart-line {
+    width: 100%;
+    height: 20px;
+    margin-top: 5px;
+}
+
+.line-chart {
+    width: 100%;
+    height: 100%;
+}
+
+/* Coins */
+.coin {
+    position: absolute;
+    font-size: 24px;
+    font-weight: bold;
+    color: #4169E1;
+    animation: coinFloat 2s ease-in-out infinite;
+}
+
+.coin-1 {
+    top: 10%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.coin-2 {
+    top: 20%;
+    right: 15%;
+    animation-delay: 0.5s;
+}
+
+.coin-3 {
+    bottom: 15%;
+    left: 20%;
+    animation-delay: 1s;
+}
+
+.gold-coin {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #FFD700;
+    border-radius: 50%;
+    border: 2px solid #FFA500;
+    animation: coinFloat 2s ease-in-out infinite;
+}
+
+.gold-coin-1 {
+    top: 15%;
+    right: 10%;
+    animation-delay: 0.3s;
+}
+
+.gold-coin-2 {
+    bottom: 20%;
+    right: 20%;
+    animation-delay: 0.8s;
+}
+
+.gold-coin-3 {
+    top: 50%;
+    left: 5%;
+    animation-delay: 1.3s;
+}
+
+/* Course Button */
+.course-button {
+    width: 100%;
+    padding: 15px 30px;
+    background-color: #4169E1;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.course-button:hover {
+    background-color: #3151B8;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(65, 105, 225, 0.4);
+}
+
+.course-button:active {
+    transform: translateY(0);
+}
+
+/* Footer */
+.footer {
+    background-color: #87CEEB;
+    padding: 25px 0;
+}
+
+.footer-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+}
+
+.footer-links {
+    display: flex;
+    gap: 30px;
+}
+
+.footer-link {
+    color: #000;
+    text-decoration: none;
+    font-size: 16px;
+    position: relative;
+    padding-left: 15px;
+    transition: all 0.3s ease;
+}
+
+.footer-link::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    background-color: #4169E1;
+    border-radius: 50%;
+}
+
+.footer-link:hover {
+    transform: translateX(5px);
+    color: #4169E1;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    border-radius: 4px;
+}
+
+.social-icon:hover {
+    transform: scale(1.2) rotate(5deg);
+}
+
+.social-icon.vk svg text {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* Animations */
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+@keyframes waveExpand {
+    0% {
+        transform: translate(-50%, -50%) scale(0.5);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1.5);
+        opacity: 0;
+    }
+}
+
+@keyframes floatIcon {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(5deg); }
+}
+
+@keyframes barGrow {
+    from {
+        height: 0;
+    }
+    to {
+        height: 100%;
+    }
+}
+
+@keyframes coinFloat {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-8px) rotate(10deg); }
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .courses-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .header-container {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        text-align: center;
+    }
+    
+    .logo {
+        justify-content: center;
+    }
+    
+    .nav-left, .nav-right {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .header-title {
+        order: -1;
+    }
+    
+    .courses-title {
+        font-size: 36px;
+    }
+    
+    .courses-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .footer-links {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+
